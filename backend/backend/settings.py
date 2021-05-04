@@ -18,9 +18,7 @@ DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:4200',
-]
+CORS_ORIGIN_WHITELIST = os.getenv("CORS_WHITELIST", 'http://localhost:4200').split(",")
 
 # Application definition
 
