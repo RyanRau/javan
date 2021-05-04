@@ -1,0 +1,10 @@
+<div class="content">
+  <div class="crumb" *ngFor="let crumb of Trail">
+    <span *ngIf="crumb.location != null">
+      <a routerLink="{{crumb.location}}">{{crumb.name}}</a> >
+    </span>
+    <span *ngIf="crumb.location == null">
+      {{crumb.name}}
+    </span>
+  </div>
+</div>

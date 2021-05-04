@@ -1,0 +1,29 @@
+.header {
+    justify-content: space-between;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.hamburger {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.mat-toolbar.mat-primary {
+    background: #9D2235;
+    color: #fff;
+}
+
+
+a:link, a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #fff;
+    text-decoration: underline;
+}
+

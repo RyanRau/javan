@@ -1,0 +1,56 @@
+<div *ngIf="action == 'Details-Add' || action == 'Details'">
+  <h1 mat-dialog-title>
+    Item Details
+  </h1>
+
+  <div mat-dialog-content>
+    <mat-list>
+      <mat-list-item> Name: {{local_data.name}} </mat-list-item>
+      <mat-list-item> Category: {{local_data.category}} </mat-list-item>
+      <mat-list-item> Location: {{local_data.location}} </mat-list-item>
+      <mat-list-item> Description: {{local_data.description}} </mat-list-item>
+    </mat-list>
+
+    <div *ngIf="action == 'Details-Add'">
+      <mat-form-field>
+        <mat-label>Needed Quantity</mat-label>
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="local_data.quantity"/>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Additional Notes</mat-label>
+        <input 
+          matInput 
+          [(ngModel)]="local_data.notes"/>
+      </mat-form-field>
+    </div>
+
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-flat-button color="primary" (click)="doAction()" *ngIf="action == 'Details-Add'">Add to Order</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button >Cancel</button>
+  </div>
+</div>
+
+<div *ngIf="action == 'OrderContent-Delete'">
+  <h1 mat-dialog-title>
+    Delete Item
+  </h1>
+
+  <div mat-dialog-content>
+    <mat-list>
+      <mat-list-item> Name: {{local_data.name}} </mat-list-item>
+      <mat-list-item> Category: {{local_data.category}} </mat-list-item>
+      <mat-list-item> Location: {{local_data.location}} </mat-list-item>
+      <mat-list-item> Description: {{local_data.description}} </mat-list-item>
+    </mat-list>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-flat-button color="primary" (click)="doAction()">Delete</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button >Cancel</button>
+  </div>
+</div>

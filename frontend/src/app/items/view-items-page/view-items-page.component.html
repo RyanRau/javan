@@ -1,0 +1,15 @@
+<div class="w100 breadcrumb sticky">
+  <app-breadcrumb [Trail]="breadcrumbTrail"></app-breadcrumb>
+</div>
+<div class="w100 main-content">
+  <div fxFlex="row">
+    <div fxFlex></div>
+    <div fxFlex="80">
+      <app-list
+        [Items]="items"
+        [viewOnly]="true">
+      </app-list>
+    </div>
+    <div fxFlex></div>
+  </div>
+</div>

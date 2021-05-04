@@ -1,0 +1,23 @@
+.content {
+  margin-left: 15px;
+}
+
+.crumb {
+  display: inline-block; 
+  padding: 10px 0px 10px 5px;
+}
+
+a, span {
+  font-size: 16px;
+}
+
+a:link, a:visited {
+  color: #9D2235;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: #9D2235;
+  text-decoration: underline;
+}
+
