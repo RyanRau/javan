@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -52,6 +53,6 @@ export class ApiService {
   }
 
   protected getUrl(relativeUrl: string) {
-    return "http://127.0.0.1:8000/" + relativeUrl;
+    return environment.apiURL + relativeUrl;
   }
 }
