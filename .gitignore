@@ -1,0 +1,9 @@
+backend/__pycache__
+items/__pycache__
+items/migrations/__pycache__
+.python-version
+db.sqlite3
+.env
+backend/backend/__pycache__
+backend/items/__pycache__
+backend/items/migrations/__pycache__
