@@ -1,5 +1,6 @@
-import { Component, Inject, Optional } from '@angular/core';
+import { AfterViewInit, Component, Inject, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ItemFormData } from 'src/app/models';
 
 export interface UsersData {
   name: string;
@@ -13,27 +14,39 @@ export interface UsersData {
 })
 export class DialogBoxComponent {
 
-  action:string;
-  local_data:any;
+  action: string;
+
+  form_data = {
+    quantity: '',
+    notes: ''
+  }
+
+  local_data: any;
 
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,
-    //@Optional() is used to prevent error if no data is passed
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData) {
-    console.log(data);
-    this.local_data = {...data};
+    @Optional() @Inject(MAT_DIALOG_DATA) public data) {
+    this.local_data = {
+      ...data
+    };
     this.action = this.local_data.action;
   }
 
   doAction(){
     this.dialogRef.close({
       event: this.action, 
-      data: this.local_data
+      data: {
+        ...this.local_data,
+        quantity: parseInt(this.form_data.quantity),
+        notes: this.form_data.notes
+      }
     });
   }
 
   closeDialog(){
-    this.dialogRef.close({event:'Cancel'});
+    this.dialogRef.close({
+      event: 'Cancel'
+    });
   }
 
 }

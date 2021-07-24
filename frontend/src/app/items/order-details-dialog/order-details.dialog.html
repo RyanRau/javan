@@ -1,0 +1,109 @@
+<h1 mat-dialog-title>Reservation Details</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="detailsForm">
+    <div class="form-container">
+      <div class="left-col">
+        <h3>Order Member(s) Information</h3>
+          <h5>Member 1(Required)</h5>
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="memberOneName">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="memberOneEmail">
+            </mat-form-field>
+
+          <h5>Member 2 (Optional)</h5>
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="memberTwoName">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="memberTwoEmail">
+            </mat-form-field>
+
+          <h5>Member 3 (Optional)</h5>
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="memberThreeName">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="memberThreeEmail">
+            </mat-form-field>
+      </div>
+      
+      <div class="right-col">
+        <h3>Order Number / Bin Number</h3>
+        <mat-form-field>
+          <mat-label>Order Number</mat-label>
+          <input type="number" matInput formControlName="orderNumber">
+        </mat-form-field>
+
+        <h3>Class Information</h3>
+          <mat-form-field>
+            <mat-label>STEM Education Class</mat-label>
+            <input matInput formControlName="class">
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Master Teacher</mat-label>
+            <input matInput formControlName="masterTeacher">
+          </mat-form-field>
+    
+        <h3>Lesson & Pickup Information</h3>
+          <div class="row between">
+            <mat-form-field class="w45">
+              <mat-label>Lesson Date</mat-label>
+              <input matInput formControlName="lessonDate" [matDatepicker]="lessonDate">
+              <mat-datepicker-toggle matSuffix [for]="lessonDate"></mat-datepicker-toggle>
+              <mat-datepicker #lessonDate></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="w45">
+              <mat-label>Lesson Time</mat-label>
+              <mat-select formControlName="lessonTime">
+                <mat-option *ngFor="let time of times" [value]="time">
+                  {{time}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        
+          <div class="row between">
+            <mat-form-field class="w45">
+              <mat-label>Pickup Date</mat-label>
+              <input matInput formControlName="lessonDate" [matDatepicker]="pickupDate">
+              <mat-datepicker-toggle matSuffix [for]="pickupDate"></mat-datepicker-toggle>
+              <mat-datepicker #pickupDate></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="w45">
+              <mat-label>Pickup Time</mat-label>
+              <mat-select formControlName="pickupTime">
+                <mat-option *ngFor="let time of times" [value]="time">
+                  {{time}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+    
+        <h3>Other Notes (Optional)</h3>
+          <mat-form-field>
+            <mat-label>Other Notes</mat-label>
+            <input matInput formControlName="otherNotes">
+          </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button 
+    color="red"
+    cdkFocusInitial
+    (click)="continue()">
+  Continue</button>
+</div>

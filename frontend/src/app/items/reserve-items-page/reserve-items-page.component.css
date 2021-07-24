@@ -1,0 +1,17 @@
+.w100{
+  width: 100%;
+}
+
+.breadcrumb {
+  top:64px;
+  background-color: whitesmoke;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.main-content {
+  margin-top: 25px;
+}

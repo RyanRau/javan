@@ -12,15 +12,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ViewItemsPageComponent } from './items/view-items-page/view-items-page.component';
 import { CommonModule } from '@angular/common';
+import { ReserveItemsPageComponent } from './items/reserve-items-page/reserve-items-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrderDetailsDialog } from './items/order-details-dialog/order-details.dialog';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const itemDeclarations = [
-  ViewItemsPageComponent
+  ViewItemsPageComponent,
+  ReserveItemsPageComponent
+]
+
+const dialogs = [
+  OrderDetailsDialog
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
+    ...dialogs,
     ...itemDeclarations
   ],
   imports: [
@@ -30,8 +40,14 @@ const itemDeclarations = [
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    MatNativeDateModule
+  ],
+  entryComponents: [
+    ...dialogs
   ],
   providers: [],
   bootstrap: [AppComponent]

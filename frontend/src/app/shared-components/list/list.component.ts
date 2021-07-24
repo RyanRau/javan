@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
 
   @Input() viewOnly: boolean = false;
     
-  @Output() ItemAdded = new EventEmitter();
+  @Output() ItemToAdd = new EventEmitter<any>();
 
   displayedColumns: string[] = ['name', 'category', 'location', 'action'];
 
@@ -65,9 +65,9 @@ export class ListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // if (result.event == 'Details-Add'){
-      //   this.addToOrder(result.data);
-      // }
+      if (result.event == 'Details-Add'){
+        this.ItemToAdd.emit(result.data)
+      }
     });
   }
 
