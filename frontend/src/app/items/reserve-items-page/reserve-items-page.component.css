@@ -15,3 +15,24 @@
 .main-content {
   margin-top: 25px;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.end {
+  justify-content: flex-end;
+}
+
+.around {
+  justify-content: space-around;
+}
+
+.material-list {
+  width: 80%;
+}
+
+.reserve-btn {
+  margin-right: 5vw;
+}

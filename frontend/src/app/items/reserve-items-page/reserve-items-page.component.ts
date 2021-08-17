@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Item, ItemFormData, OrderContentDTO, OrderDTO } from 'src/app/models';
 import { ItemsService, OrderService } from 'src/app/services';
+import { ReviewOrderDialog } from '../review-order-dialog/review-order.dialog';
 
 @Component({
   selector: 'app-reserve-items-page',
@@ -22,6 +25,8 @@ export class ReserveItemsPageComponent implements OnInit {
   constructor(
     private itemService: ItemsService,
     private orderService: OrderService,
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog,
     private router: Router
   ) { }
 
@@ -39,26 +44,15 @@ export class ReserveItemsPageComponent implements OnInit {
   }
 
   addItem(itemData: ItemFormData) {
-    let order: OrderDTO = JSON.parse(localStorage.getItem('order'))
-    
-    if (!order)
-      return;
+    this.orderService.addItem(itemData);
+    this.snackBar.open('Item added', '', {
+      duration: 2000
+    });
+  }
 
-    order.content = order.content.filter(i => i.item_id != itemData.id);
-
-    let itemEntry: OrderContentDTO = {
-      item_id: itemData.id,
-      item_name: itemData.name,
-      quantity: itemData.quantity,
-      notes: itemData.notes,
-      self_filled: false
-    };
-
-    order.content.push(itemEntry);
-  
-    localStorage.setItem(
-      'order',
-      JSON.stringify(order)
-    )
+  reviewOrder(){
+    const dialogRef = this.dialog.open(ReviewOrderDialog, {
+      width: '100%'
+    });
   }
 }

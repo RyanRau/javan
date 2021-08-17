@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>View Order</h1>
+
+<div mat-dialog-content>
+  <div class="form-container">
+    <div class="left-col">
+      <h3>Order Details</h3>
+        
+    </div>
+    
+    <div class="right-col">
+      <h3>Order Contents</h3>
+        <div class="order-content-container">
+          <table mat-table [dataSource]="items" matSort class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let item"> {{item.item_name}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+                <td mat-cell *matCellDef="let item"> {{item.quantity}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td class="float-r" mat-cell *matCellDef="let item"> 
+                    <a class="action-button" mat-button (click)="editItem(item)"><mat-icon>edit</mat-icon></a> 
+                    <a class="action-button" mat-button color="red" (click)="removeItem(item)"><mat-icon>delete</mat-icon></a>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+        
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button 
+    color="red"
+    cdkFocusInitial
+    (click)="placeOrder()">
+  Place Order</button>
+</div>

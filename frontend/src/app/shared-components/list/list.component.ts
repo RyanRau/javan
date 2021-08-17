@@ -30,22 +30,12 @@ export class ListComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'category', 'location', 'action'];
 
-  private orderNumber: number = null;
-
   constructor(
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar,
-    // private _orderService: OrderService,
     private _route: ActivatedRoute
-  ) { 
-    // this._route.params.subscribe(params => {
-    //   this.orderNumber = +params['id'];
-    // });
-  }
+  ) {}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -70,35 +60,4 @@ export class ListComponent implements OnInit {
       }
     });
   }
-
-  // private addToOrder(data){
-  //   if (this.orderNumber) {
-  //     let orderContent = new OrderContentDTO();
-
-  //     orderContent.order = this.orderNumber;
-
-  //     orderContent.item = data.id;
-  
-  //     orderContent.name = data.name;
-  //     orderContent.quantity = data.quantity;
-  //     orderContent.other_notes = data.notes;
-
-  //     this._orderService.postOrderContent(orderContent).subscribe(response => {
-  //       this.ItemAdded.emit();    
-  //       this.openSnackBar("Item added", null);
-  //     }, error => {
-  //       console.error(error);
-  //       this.openSnackBar("Failed to add item", null);
-  //     });
-  //   }else {
-  //     this.openSnackBar("Failed to add item", null);
-  //   }
-  // }
-
-  private openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-    });
-  }
-
 }

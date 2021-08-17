@@ -2,15 +2,22 @@
   <app-breadcrumb [Trail]="breadcrumbTrail"></app-breadcrumb>
 </div>
 <div class="w100 main-content">
-  <div fxFlex="row">
-    <div fxFlex></div>
-    <div fxFlex="80">
+  <div class="row end">
+    <div>
+      <button 
+        mat-button 
+        color="red" 
+        class="reserve-btn"
+        (click)="reviewOrder()">View Order</button>
+    </div>
+  </div>
+  <div class="row around">
+    <div class="material-list">
       <app-list
         [Items]="items"
         [viewOnly]="false"
         (ItemToAdd)="addItem($event)">
       </app-list>
     </div>
-    <div fxFlex></div>
   </div>
 </div>

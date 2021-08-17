@@ -1,5 +1,5 @@
 export class ItemFormData {
-  id: 1
+  id: string
   category: string
   description: string
   location: string
@@ -14,6 +14,7 @@ export class OrderDTO {
     name: string, 
     email:string
   }[];
+  className: string;
   masterTeacher: string;
   lessonDateTime: string;
   pickupDateTime: string;
@@ -22,8 +23,9 @@ export class OrderDTO {
 }
 
 export class OrderContentDTO {
-  item_id: number
+  item_id: string
   item_name: string;
+  item_location: string;
   quantity: number;
   notes: string;
   self_filled: boolean = false;

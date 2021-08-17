@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { OrderDetailsDialog } from '../items/order-details-dialog/order-details.dialog';
-import { ItemsService } from '../services';
+import { ItemsService, OrderService } from '../services';
 
 @Component({
   selector: 'app-home-page',
@@ -11,8 +11,11 @@ import { ItemsService } from '../services';
 })
 export class HomePageComponent implements OnInit {
 
+  hasOrder: boolean = false;
+
   constructor(
     private itemService: ItemsService,
+    private orderService: OrderService,
     private router: Router,
     private dialog: MatDialog
   ) { }
@@ -21,21 +24,26 @@ export class HomePageComponent implements OnInit {
     this.itemService.getAll().subscribe(result => {
       console.log(result);
     })
+
+    this.hasOrder = this.orderService.getOrder() != null;
   }
 
   openOrderDetailsDialog(): void {
+    if(this.hasOrder){
+      this.router.navigateByUrl('/items/reserve');
+      return
+    }
+
     const dialogRef = this.dialog.open(OrderDetailsDialog, {
-      width: '100%',
-      data: {name: 'name', animal: 'animal'}
+      width: '100%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result == null || result.data == null)
         return;
       
-      localStorage.setItem('order', JSON.stringify(result.data));
+      this.orderService.createOrder(result.data)
       this.router.navigateByUrl('/items/reserve');
     });
   }
-
 }

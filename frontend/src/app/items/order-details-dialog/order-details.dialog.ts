@@ -107,7 +107,21 @@ export class OrderDetailsDialog {
   }
 
   formatDateTime(date, time): string {
-    return date.toLocaleDateString("en-US") + " " + time;
+    let outerSplit = time.split(' ');
+    let innerSplit = outerSplit[0].split(':');
+
+    let hour = parseInt(innerSplit[0]);
+    let min = parseInt(innerSplit[1]);
+
+    if (outerSplit[1] == "PM")
+      hour += 12;
+
+    date.setHours(hour);
+    date.setMinutes(min);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
+
+    return date.toISOString();
   }
 
   cancel(): void {
@@ -132,6 +146,7 @@ export class OrderDetailsDialog {
         this.detailsForm.controls['pickupDate'].value,
         this.detailsForm.controls['pickupTime'].value
         ),
+      className: this.detailsForm.controls['class'].value,
       masterTeacher: this.detailsForm.controls['masterTeacher'].value,
       otherNotes: this.detailsForm.controls['otherNotes'].value,
       content: []

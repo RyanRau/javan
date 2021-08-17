@@ -16,6 +16,7 @@ import { ReserveItemsPageComponent } from './items/reserve-items-page/reserve-it
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderDetailsDialog } from './items/order-details-dialog/order-details.dialog';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ReviewOrderDialog } from './items/review-order-dialog/review-order.dialog';
 
 const itemDeclarations = [
   ViewItemsPageComponent,
@@ -23,7 +24,8 @@ const itemDeclarations = [
 ]
 
 const dialogs = [
-  OrderDetailsDialog
+  OrderDetailsDialog,
+  ReviewOrderDialog
 ]
 
 @NgModule({
