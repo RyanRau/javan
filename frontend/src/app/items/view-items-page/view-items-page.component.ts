@@ -21,6 +21,12 @@ export class ViewItemsPageComponent implements OnInit {
   constructor(private itemService: ItemsService) { }
 
   ngOnInit(): void {
+    this.retrieveItems();
+  }
+
+  retrieveItems() {
+    this.isLoading = true;
+
     this.itemService.getAll().subscribe(result => {
       this.items = result;
       this.isLoading = false;

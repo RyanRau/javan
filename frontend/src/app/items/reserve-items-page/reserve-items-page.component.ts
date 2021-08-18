@@ -34,6 +34,12 @@ export class ReserveItemsPageComponent implements OnInit {
     if(localStorage.getItem('order') == null) //TODO: display error
       this.router.navigateByUrl('/');
 
+    this.retrieveItems();
+  }
+
+  retrieveItems() {
+    this.isLoading = true;
+
     this.itemService.getAll().subscribe(result => {
       this.items = result;
       this.isLoading = false;

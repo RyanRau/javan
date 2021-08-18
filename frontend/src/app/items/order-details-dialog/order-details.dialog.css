@@ -34,3 +34,15 @@ h5 {
 .w45 {
   width: 45%;
 }
+
+.actions {
+  margin-top: 25px;
+  float: right;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  color: #9D2235 !important;
+}
+::ng-deep.mat-form-field-ripple {
+  background-color: #9D2235 !important;;
+}

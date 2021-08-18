@@ -19,3 +19,9 @@ td, th {
   background-color: #9D2235;
   color: #fff;
 }
+
+.table-container{
+  margin-top: 10px;
+  max-height: calc(100vh - 275px);
+  overflow: auto;
+}

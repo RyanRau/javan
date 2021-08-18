@@ -5,13 +5,15 @@ import { AppRoutingModule } from '../app-routing.module';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { ListComponent } from './list/list.component';
+import { LoaderComponent } from './loader/loader.component';
 import { NavComponent } from './nav/nav.component';
 
 const sharedModules = [
   NavComponent,
   ListComponent,
   BreadcrumbComponent,
-  DialogBoxComponent
+  DialogBoxComponent,
+  LoaderComponent
 ]
 
 @NgModule({

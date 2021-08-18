@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { ApiService } from '.';
 import { ItemFormData, OrderContentDTO, OrderDTO } from '../models';
 
@@ -71,19 +72,12 @@ export class OrderService {
     localStorage.removeItem('order');
   }
 
-  placeOrder(): boolean {
+  placeOrder(): Observable<any> {
     let order = this.getOrder();
 
     if (!order)
-      return false;
+      return of(false);
 
-    this.api.post('api/items/order', order).subscribe(result => {
-      console.log(result)
-      this.deleteOrder();
-      return true
-    }, error => {
-      console.error(error);
-      return false
-    })
+    return this.api.post('api/items/order', order);
   }
 }

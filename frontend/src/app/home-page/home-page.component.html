@@ -13,22 +13,25 @@
     <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap>
       <div fxFlex="40" class="resource">
         <h1>Library</h1>
-        <hr style="margin-top: -15px; width: 80%; float: left;">
+        <hr style="margin-top: -15px; width: 100%; float: left;">
+        <span>
+          COMING SOON...
+        </span>
 
       </div>
       <div fxFlex="40" class="resource">
         <h1>Materials</h1>
-        <hr style="margin-top: -15px; width: 80%; float: left;">
+        <hr style="margin-top: -15px; width: 100%; float: left;">
 
-        <span>
-          To view available materials, click <a class="btn" mat-button color="red" routerLink="/items/view">View Materials</a>
-        </span>
-
-        <span>
-          To start a reservation, enter your assigned bin number and click "Reserve Materials" below. 
-        </span>
-        <!-- <input type="text">Enter Bin number</input> -->
-        <a class="btn" mat-button color="red" (click)="openOrderDetailsDialog()">{{ hasOrder ? 'Continue Order' : 'Reserve Materials' }}</a>
+        <div class="button-container">
+          <a class="btn" mat-button color="red" routerLink="/items/view">View Materials</a>
+          <br>
+          <span>
+            or
+          </span>
+          <br>
+          <a class="btn" mat-button color="red" (click)="openOrderDetailsDialog()">{{ hasOrder ? 'Continue Order' : 'Reserve Materials' }}</a>  
+        </div>
         
       </div>
     </div>
@@ -37,21 +40,3 @@
 </div>
 
 <div fxFlex></div>
-  
-<!-- <div fxLayout="row">
-  <div fxFlex></div>
-
-  <div fxFlex="30">
-    <button mat-button> Library</button>
-  </div>
-
-  <div fxFlex="30">
-    <a class="btn" routerLink="/items/view">View Materials</a>
-    <button mat-button router-link="/items/view/"> Materials</button>
-
-  </div>
-
-  <div fxFlex></div>
-</div> -->
-
-

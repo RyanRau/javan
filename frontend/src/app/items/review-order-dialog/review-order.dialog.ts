@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatTableDataSource } from "@angular/material/table";
+import { Router } from "@angular/router";
 import { OrderContentDTO, OrderDTO } from "src/app/models";
 import { OrderService } from "src/app/services";
 
@@ -24,6 +25,7 @@ export class ReviewOrderDialog {
   displayedColumns: string[] = ['name', 'quantity', 'action'];
 
   constructor(
+    private router: Router,
     private snackBar: MatSnackBar,
     private orderService: OrderService,
     public dialogRef: MatDialogRef<ReviewOrderDialog>,
@@ -60,7 +62,23 @@ export class ReviewOrderDialog {
   }
 
   placeOrder(){
+    this.orderService.placeOrder().subscribe(result => {
+      this.dialogRef.close();
 
+      if(result != false && result.trello_card_id != null){
+        this.orderService.deleteOrder();
+
+        this.snackBar.open('Successfully Placed Order' , '', {
+          duration: 2000
+        });
+
+        this.router.navigateByUrl('/success');
+      }else {
+        this.snackBar.open('Failed to place order' , '', {
+          duration: 2000
+        });
+      }
+    });
   }
 
 }
