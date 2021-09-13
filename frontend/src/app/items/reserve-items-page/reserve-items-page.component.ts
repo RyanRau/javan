@@ -88,6 +88,9 @@ export class ReserveItemsPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result == null)
+        return;
+
       if(result.action == 'Place-Order') {
         this.placeOrder()
       }
