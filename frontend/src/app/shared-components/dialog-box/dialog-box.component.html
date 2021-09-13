@@ -42,7 +42,7 @@
     
     <ng-container *ngIf="action == 'Unlisted-Add'">
       <form>
-        <mat-form-field>
+        <mat-form-field class="unlisted-field">
           <mat-label>Item Name</mat-label>
           <input 
             matInput 
@@ -50,7 +50,8 @@
             [value]="unlisted_data.name"
             (input)="unlisted_data.name=$event.target.value"/>
         </mat-form-field>
-        <mat-form-field>
+        <br>
+        <mat-form-field class="unlisted-field">
           <mat-label>Needed Quantity</mat-label>
           <input
             matInput
@@ -59,7 +60,8 @@
             [value]="form_data.quantity"
             (input)="form_data.quantity=$event.target.value"/>
         </mat-form-field>
-        <mat-form-field>
+        <br>
+        <mat-form-field class="unlisted-field">
           <mat-label>Additional Notes</mat-label>
           <input 
             matInput 
