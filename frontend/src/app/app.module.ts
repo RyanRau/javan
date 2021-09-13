@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderDetailsDialog } from './items/order-details-dialog/order-details.dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReviewOrderDialog } from './items/review-order-dialog/review-order.dialog';
+import { SuccessPageComponent } from './success-page/success-page.component';
 
 const itemDeclarations = [
   ViewItemsPageComponent,
@@ -32,6 +33,7 @@ const dialogs = [
   declarations: [
     AppComponent,
     HomePageComponent,
+    SuccessPageComponent,
     ...dialogs,
     ...itemDeclarations
   ],
