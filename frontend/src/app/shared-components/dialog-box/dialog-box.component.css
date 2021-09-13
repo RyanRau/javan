@@ -8,3 +8,14 @@
 .actions {
   float: right;
 }
+
+form {
+  margin-top: 15px;
+}
+.qty-field {
+  width: 20%
+}
+.notes-field {
+  margin-left: 5%;
+  width: 70%;
+}

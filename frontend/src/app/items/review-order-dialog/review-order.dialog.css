@@ -35,10 +35,19 @@ h5 {
   width: 45%;
 }
 
-.float-r {
-  float: right
+.t-align-r {
+  text-align: right
 }
 
 .order-content-container {
   max-height: 350px;
+}
+
+.actions {
+  margin-top: 15px;
+  float: right;
+}
+
+.content-table {
+  width: 90%;
 }

@@ -27,3 +27,8 @@ a:hover, a:active {
     text-decoration: underline;
 }
 
+#report-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}

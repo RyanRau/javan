@@ -50,7 +50,6 @@ export class ListComponent implements OnInit {
     obj.action = action;
     const dialogRef = this.dialog.open(DialogBoxComponent, {
       width: '50%',
-      height: '500px',
       data: obj
     });
 

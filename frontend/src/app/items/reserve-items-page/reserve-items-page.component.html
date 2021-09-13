@@ -9,8 +9,15 @@
       <button 
         mat-button 
         color="red" 
+        class="unlisted-btn"
+        (click)="addUnlisted()">Add Unlisted Item <mat-icon>add</mat-icon>
+      </button>
+      <button 
+        mat-button 
+        color="red" 
         class="reserve-btn"
-        (click)="reviewOrder()">View Order</button>
+        (click)="reviewOrder()">View/Place Order <mat-icon>shopping_cart</mat-icon>
+      </button>
     </div>
   </div>
   <div class="row around">

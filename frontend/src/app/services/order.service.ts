@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Guid } from 'guid-typescript';
 import { Observable, of } from 'rxjs';
 import { ApiService } from '.';
 import { ItemFormData, OrderContentDTO, OrderDTO } from '../models';
@@ -28,6 +29,9 @@ export class OrderService {
     if (!order)
       return;
 
+    if (itemData.id == null)
+      itemData.id = Guid.create().toString();
+
     order.content = order.content.filter(i => i.item_id != itemData.id);
 
     let itemEntry: OrderContentDTO = {
@@ -45,6 +49,26 @@ export class OrderService {
       'order',
       JSON.stringify(order) 
     )
+  }
+  
+  updateItem(itemToUpdate: OrderContentDTO){
+    let order = this.getOrder();
+
+    if (!order)
+      return;
+
+    let itemIndex = order.content.findIndex(i => i.item_id == itemToUpdate.item_id);
+    
+    if (itemIndex == -1)
+      return;
+
+    order.content[itemIndex] = itemToUpdate;
+
+    localStorage.setItem(
+      'order',
+      JSON.stringify(order) 
+    )
+    
   }
   
   removeItemById(id: string): boolean {

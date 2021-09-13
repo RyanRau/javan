@@ -1,61 +1,78 @@
-<div *ngIf="action == 'Details-Add' || action == 'Details'">
-  <h1 mat-dialog-title>
+<div *ngIf="action == 'Details-Add' || action == 'Details-Update' || action == 'Unlisted-Add' || action == 'Details'">
+  <h1 mat-dialog-title *ngIf="action != 'Unlisted-Add'">
     Item Details
   </h1>
 
-  <div mat-dialog-content>
-    <mat-list>
-      <mat-list-item> Name: {{local_data.name}} </mat-list-item>
-      <mat-list-item> Category: {{local_data.category}} </mat-list-item>
-      <mat-list-item> Location: {{local_data.location}} </mat-list-item>
-      <mat-list-item> Description: {{local_data.description}} </mat-list-item>
-    </mat-list>
+  <h1 mat-dialog-title *ngIf="action == 'Unlisted-Add'">
+    Add Unlisted Item
+  </h1>
 
-    <div *ngIf="action == 'Details-Add'">
+  <div mat-dialog-content>
+
+    <ng-container *ngIf="action != 'Unlisted-Add'">
+      <mat-list *ngIf="action != 'Unlisted-Add'">
+        <mat-list-item> Name: {{local_data.name}} </mat-list-item>
+        <mat-list-item> Category: {{local_data.category}} </mat-list-item>
+        <mat-list-item> Location: {{local_data.location}} </mat-list-item>
+        <mat-list-item *ngIf="action != 'Details-Update'"> Description: {{local_data.description}} </mat-list-item>
+      </mat-list>
+  
+      <div *ngIf="action == 'Details-Add' || action == 'Details-Update'">
+        <form>
+          <mat-form-field class="qty-field">
+            <mat-label>Needed Quantity</mat-label>
+            <input
+              matInput
+              type="number"
+              required
+              [value]="form_data.quantity"
+              (input)="form_data.quantity=$event.target.value"/>
+          </mat-form-field>
+          <mat-form-field class="notes-field">
+            <mat-label>Additional Notes</mat-label>
+            <input 
+              matInput 
+              [value]="form_data.notes"
+              (input)="form_data.notes=$event.target.value"/>
+          </mat-form-field>
+        </form>
+        
+      </div>
+    </ng-container>
+    
+    <ng-container *ngIf="action == 'Unlisted-Add'">
       <form>
+        <mat-form-field>
+          <mat-label>Item Name</mat-label>
+          <input 
+            matInput 
+            required
+            [value]="unlisted_data.name"
+            (input)="unlisted_data.name=$event.target.value"/>
+        </mat-form-field>
         <mat-form-field>
           <mat-label>Needed Quantity</mat-label>
           <input
             matInput
             type="number"
+            required
             [value]="form_data.quantity"
             (input)="form_data.quantity=$event.target.value"/>
         </mat-form-field>
-        <br>
         <mat-form-field>
           <mat-label>Additional Notes</mat-label>
           <input 
             matInput 
+            required
             [value]="form_data.notes"
             (input)="form_data.notes=$event.target.value"/>
         </mat-form-field>
       </form>
-      
-    </div>
+    </ng-container>
 
-
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button mat-flat-button color="primary" (click)="doAction()" *ngIf="action == 'Details-Add'">Add to Order</button>
-    <button mat-button (click)="closeDialog()" mat-flat-button >Cancel</button>
-  </div>
-</div>
-
-<div *ngIf="action == 'OrderContent-Delete'">
-  <h1 mat-dialog-title>
-    Delete Item
-  </h1>
-
-  <div mat-dialog-content>
-    <mat-list>
-      <mat-list-item> Name: {{local_data.name}} </mat-list-item>
-      <mat-list-item> Category: {{local_data.category}} </mat-list-item>
-      <mat-list-item> Location: {{local_data.location}} </mat-list-item>
-      <mat-list-item> Description: {{local_data.description}} </mat-list-item>
-    </mat-list>
   </div>
   <div mat-dialog-actions class="actions">
-    <button mat-button mat-flat-button color="primary" (click)="doAction()">Delete</button>
+    <button mat-button mat-flat-button color="red" (click)="doAction()" *ngIf="action == 'Details-Add' || action == 'Unlisted-Add' || action == 'Details-Update' ">{{ (action == 'Details-Update') ? 'Update' : 'Add to Order' }}</button>
     <button mat-button (click)="closeDialog()" mat-flat-button >Cancel</button>
   </div>
 </div>

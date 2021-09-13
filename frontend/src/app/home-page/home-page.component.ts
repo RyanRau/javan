@@ -22,7 +22,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.itemService.getAll().subscribe(result => {
-      console.log(result);
+      console.log('ITS ALIVE', result); // Wacks up backend server.... hopefully
     })
 
     this.hasOrder = this.orderService.getOrder() != null;
