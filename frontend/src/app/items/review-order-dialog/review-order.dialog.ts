@@ -56,6 +56,17 @@ export class ReviewOrderDialog {
     this.dialogRef.close();
   }
 
+  deleteOrder(){
+    this.orderService.deleteOrder();
+    this.dialogRef.close();
+
+    this.snackBar.open('Successfully Deleted Order' , '', {
+      duration: 2000
+    });
+
+    this.router.navigateByUrl('/');
+  }
+
   removeItem(item: OrderContentDTO): void {
     let success = this.orderService.removeItemById(item.item_id);
 

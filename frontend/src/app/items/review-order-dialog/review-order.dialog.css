@@ -45,7 +45,9 @@ h5 {
 
 .actions {
   margin-top: 15px;
-  float: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .content-table {

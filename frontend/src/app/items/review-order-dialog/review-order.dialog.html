@@ -43,10 +43,17 @@
 </div>
 
 <div mat-dialog-actions class="actions">
-  <button mat-button (click)="cancel()">Cancel</button>
-  <button mat-button 
-    color="red"
-    cdkFocusInitial
-    (click)="placeOrder()">
-  Place Order</button>
+  <div class="left-action">
+    <button mat-button color="red" (click)="deleteOrder()">Delete Order<mat-icon>delete</mat-icon></button>
+  </div>
+
+  <div class="right-action">
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button 
+      color="red"
+      cdkFocusInitial
+      (click)="placeOrder()">
+    Place Order</button>
+  </div>
+
 </div>
