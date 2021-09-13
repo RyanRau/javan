@@ -90,23 +90,8 @@ export class ReviewOrderDialog {
       return;
     }
 
-    this.orderService.placeOrder().subscribe(result => {
-      this.dialogRef.close();
-
-      if(result != false && result.trello_card_id != null){
-        this.orderService.deleteOrder();
-
-        this.snackBar.open('Successfully Placed Order' , '', {
-          duration: 2000
-        });
-
-        this.router.navigateByUrl('/success');
-      }else {
-        this.snackBar.open('Failed to place order' , '', {
-          duration: 2000
-        });
-      }
-    });
+    this.dialogRef.close({
+      action: 'Place-Order'
+    })
   }
-
 }

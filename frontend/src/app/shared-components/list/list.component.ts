@@ -54,9 +54,12 @@ export class ListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result.event == 'Details-Add'){
+      if (result == null)
+        return;
+
+      if (result.event == 'Details-Add')
         this.ItemToAdd.emit(result.data)
-      }
+      
     });
   }
 }

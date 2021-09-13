@@ -5,6 +5,8 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
 
+from datetime import datetime
+
 from .models import Item
 from core.models import Key
 from .trello import Trello
@@ -15,6 +17,7 @@ class ListItem(generics.ListAPIView):
 
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
+
 
 @api_view(['POST'])    
 def post_order(request):
@@ -45,11 +48,16 @@ def post_order(request):
         
     card_title = 'Order ' + str(order_serializer.data['orderNumber']) + ' - ' + stu_name_list
 
+    email_link = '[Email Students](mailto:' + stu_email_list.replace(', ', ';') + '?subject=JAVAN%20Order%20#' + str(order_serializer.data['orderNumber']) + ')'
+
+    lesson_dateTime = datetime.strptime(order_serializer.data['lessonDateTime'], "%Y-%m-%dT%H:%M:%SZ").strftime("%c")
+
     card_desc = "Student Name(s): " + stu_name_list + " \n" \
                 "Student Email(s): " + stu_email_list + " \n" \
                 "Class: " + order_serializer.data['className'] + "\n" \
                 "Master Teacher: " + order_serializer.data['masterTeacher'] + "\n" \
-                "Other Notes: " + order_serializer.data['otherNotes']
+                "Lesson Date & Time: " + lesson_dateTime + "\n" \
+                "Other Notes: " + order_serializer.data['otherNotes'] + "\n \n" + email_link
 
     card_id = trello_client.create_card(materials_list_id, card_title, card_desc, order_serializer.data['pickupDateTime'])
     checklist_id = trello_client.create_checklist(card_id, 'Items')

@@ -52,8 +52,6 @@ export class DialogBoxComponent {
       ...data
     };
     this.action = this.local_data.action;
-
-    console.log(this.action)
   }
 
   doAction(){

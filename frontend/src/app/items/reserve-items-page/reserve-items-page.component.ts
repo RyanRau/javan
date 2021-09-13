@@ -86,5 +86,38 @@ export class ReserveItemsPageComponent implements OnInit {
     const dialogRef = this.dialog.open(ReviewOrderDialog, {
       width: '100%'
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.action == 'Place-Order') {
+        this.placeOrder()
+      }
+    })
+  }
+
+  placeOrder(){
+    this.isLoading = true;
+    this.orderService.placeOrder().subscribe(result => {
+      if(result != false && result.trello_card_id != null){
+        this.orderService.deleteOrder();
+
+        this.snackBar.open('Successfully Placed Order' , '', {
+          duration: 2000
+        });
+
+        this.router.navigateByUrl('/success');
+      }else {
+        this.snackBar.open('Failed to place order' , '', {
+          duration: 2000
+        });
+      }
+      this.isLoading = false;
+    }, error => {
+      console.error(error);
+      this.isLoading = false;
+
+      this.snackBar.open('Failed to place order' , '', {
+        duration: 2000
+      });
+    });
   }
 }
