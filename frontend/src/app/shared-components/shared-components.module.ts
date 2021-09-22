@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AngularMaterialModule } from '../angular-material.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { ListComponent } from './list/list.component';
 import { LoaderComponent } from './loader/loader.component';
@@ -13,6 +14,7 @@ const sharedModules = [
   ListComponent,
   BreadcrumbComponent,
   DialogBoxComponent,
+  ConfirmDialogComponent,
   LoaderComponent
 ]
 

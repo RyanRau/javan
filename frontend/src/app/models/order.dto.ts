@@ -15,7 +15,7 @@ export class OrderDTO {
     email:string
   }[];
   className: string;
-  masterTeacher: string;
+  instructor: string;
   lessonDateTime: string;
   pickupDateTime: string;
   otherNotes: string; 

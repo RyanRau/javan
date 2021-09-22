@@ -30,7 +30,14 @@
             or
           </span>
           <br>
-          <a class="btn" mat-button color="red" (click)="openOrderDetailsDialog()">{{ hasOrder ? 'Continue Order' : 'Reserve Materials' }}</a>  
+          <div class="btn-row">
+            <a class="btn" mat-button color="red" (click)="openOrderDetailsDialog()">{{ hasOrder ? 'Continue Order' : 'Reserve Materials' }}</a>  
+            <a class="delete-btn" 
+               mat-button 
+               color="red" 
+               (click)="deleteOrder()"
+               *ngIf="hasOrder"><mat-icon>delete</mat-icon></a>  
+          </div>
         </div>
         
       </div>

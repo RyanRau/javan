@@ -31,6 +31,6 @@ class OrderSerializer(serializers.Serializer):
     pickupDateTime = serializers.DateTimeField()
     content = OrderContentSerializer(many=True)
     className = serializers.CharField(max_length=200)
-    masterTeacher = serializers.CharField(max_length=200)
+    instructor = serializers.CharField(max_length=200)
     otherNotes = serializers.CharField(max_length=200, required=False, allow_blank=True)
 

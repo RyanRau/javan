@@ -1,0 +1,14 @@
+::ng-deep .mat-focused .mat-form-field-label {
+  color: #9D2235 !important;
+}
+::ng-deep.mat-form-field-ripple {
+  background-color: #9D2235 !important;;
+}
+
+.actions {
+  float: right;
+}
+
+.cancel-btn {
+  margin-right: 5px;
+}

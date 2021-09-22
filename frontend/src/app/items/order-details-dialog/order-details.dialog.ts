@@ -78,7 +78,7 @@ export class OrderDetailsDialog {
       memberThreeEmail: new FormControl('', Validators.email),
 
       class: new FormControl('', Validators.required),
-      masterTeacher: new FormControl('', Validators.required),
+      instructor: new FormControl('', Validators.required),
 
       lessonDate: new FormControl(new Date(), Validators.required),
       lessonTime: new FormControl('', Validators.required),
@@ -147,7 +147,7 @@ export class OrderDetailsDialog {
         this.detailsForm.controls['pickupTime'].value
         ),
       className: this.detailsForm.controls['class'].value,
-      masterTeacher: this.detailsForm.controls['masterTeacher'].value,
+      instructor: this.detailsForm.controls['instructor'].value,
       otherNotes: this.detailsForm.controls['otherNotes'].value,
       content: []
     }

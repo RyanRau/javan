@@ -55,7 +55,7 @@ def post_order(request):
     card_desc = "Student Name(s): " + stu_name_list + " \n" \
                 "Student Email(s): " + stu_email_list + " \n" \
                 "Class: " + order_serializer.data['className'] + "\n" \
-                "Master Teacher: " + order_serializer.data['masterTeacher'] + "\n" \
+                "Instructor: " + order_serializer.data['instructor'] + "\n" \
                 "Lesson Date & Time: " + lesson_dateTime + "\n" \
                 "Other Notes: " + order_serializer.data['otherNotes'] + "\n \n" + email_link
 

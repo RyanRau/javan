@@ -30,6 +30,17 @@ span {
   height: 500px;
 }
 
+.btn-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.delete-btn {
+  width: 50px;
+  margin-left: 15px
+}
+
 .btn {
   width: 100%;
 }

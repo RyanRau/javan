@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { OrderDetailsDialog } from '../items/order-details-dialog/order-details.dialog';
 import { ItemsService, OrderService } from '../services';
+import { ConfirmDialogComponent } from '../shared-components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-home-page',
@@ -44,6 +45,20 @@ export class HomePageComponent implements OnInit {
       
       this.orderService.createOrder(result.data)
       this.router.navigateByUrl('/items/reserve');
+    });
+  }
+
+  deleteOrder(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == null)
+        return;
+      
+      if (result == true){
+        this.orderService.deleteOrder();
+        this.hasOrder = this.orderService.getOrder() != null;
+      }
     });
   }
 }
